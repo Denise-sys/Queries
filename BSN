@@ -12,10 +12,10 @@ VAR_BSN := TO_NUMBER(BSN_NR);
 totaal := (-1*MOD(VAR_BSN,10));
    WHILE i < 9 
     LOOP
-      i:= i + 1;
-      totaal := totaal +(i*MOD(VAR_BSN,10)):
-VAR_BSN := (VAR_BSN - MOD(VAR_BSN,10))/10;
-END LOOP;
+    i:= i + 1;
+    totaal := totaal +(i*MOD(VAR_BSN,10)):
+    VAR_BSN := (VAR_BSN - MOD(VAR_BSN,10))/10;
+    END LOOP;
 
   IF MOD(totaal,11) = 0 AND totaal != 0 THEN
   RETURN LPAD(BSN_NR, 9, '0');
