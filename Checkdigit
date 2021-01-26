@@ -1,0 +1,15 @@
+CREATE function fnElfProef(sofinummer INT)
+  RETURNS BOOLEAN
+  
+BEGIN 
+  DECLARE i, totaal INT DEFAULT 0;
+  WHILE i < 9 DO
+    SET i = i + 1;
+    SET totaal = totaal + (i*(sofinummer%10));
+    SET sofinummer = FLOOR (sofinummer/10);
+  END WHILE
+  RETURN (totaal%11) = 0;
+END
+
+DELETE from csv.pensioen 
+  WHERE personeelsnummer 26718;
