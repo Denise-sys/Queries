@@ -1,0 +1,24 @@
+ALTER table csv from pensioen
+ADD UNIQUE(Personeelsnummer);
+
+SELECT naamDeelnemer from CSV
+  WHERE salaris < 50.000
+  
+SELECT * from pensioen.csv
+  WHERE (salaris > 60.000) IS NOT NULL 
+  OR (salaris < 40.000);
+  
+SELECT AVG(salaris) from pensioen.csv; 
+SELECT SUM(salaris) from pensioen.csv;
+
+SELECT naamDeelnemer from pensioen.csv
+  WHERE naamDeelnemer LIKE 'A_Z';
+  
+SELECT * FROM pensioen.csv 
+  ORDER BY salaris DESC;
+  
+  
+SELECT Datumindienst from pensioen.csv
+  WHERE str_to_date(Datumindienst, '%d-%m-%y') IS NOT NULL
+  OR str_to_date(Datumindienst, %m-%d-%y');
+
