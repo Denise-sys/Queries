@@ -21,4 +21,7 @@ SELECT * FROM pensioen.csv
 SELECT Datumindienst from pensioen.csv
   WHERE str_to_date(Datumindienst, '%d-%m-%y') IS NOT NULL
   OR str_to_date(Datumindienst, %m-%d-%y');
+  
+  SELECT Geboortedatum FROM pensioen.csv
+    WHERE BETWEEN str_to_date(Geboortedatum, )
 
