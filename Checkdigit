@@ -12,4 +12,4 @@ BEGIN
 END
 
 DELETE from csv.pensioen 
-  WHERE personeelsnummer 26718;
+  WHERE personeelsnummer = 26718;
