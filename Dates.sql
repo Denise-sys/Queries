@@ -6,3 +6,7 @@ FROM csv.test2
     OR str_to_date(Datumindienst, '%m-%d-%y');
     
 SELECT * FROM csv.test2;
+
+csv = database 
+test2 = table 
+
