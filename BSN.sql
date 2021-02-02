@@ -1,26 +1,24 @@
 The BSN is the citizen service number, a unique registration number for everyone who lives in the Netherlands. 
 It's able to validate a BSN via check digit proof; 
 
-CREATE OR REPLACE FUNCTION BSNPROEF(BSN_NR_VARCHAR2)
-RETURN VARCHAR2
-    AS i INT :=1;
-    totaal INT :=0;
-    VAR_BSN INT; 
+DELIMITER $$ 
+create function fn_elfproef (SofiNr int)
+returns boolean
+	BEGIN 
+    DECLARE index_i INT;
+    DECLARE totaal INT;
     
-BEGIN 
-VAR_BSN := TO_NUMBER(BSN_NR);
-totaal := (-1*MOD(VAR_BSN,10));
-   WHILE i < 9 
-    LOOP
-    i:= i + 1;
-    totaal := totaal +(i*MOD(VAR_BSN,10)):
-    VAR_BSN := (VAR_BSN - MOD(VAR_BSN,10))/10;
-    END LOOP;
+    SET totaal = 0;
+    SET index_i = 9;
+    
+    WHILE index_i > 0 DO 
+		SET index_i = index_i - 1; 
+        SET totaal = totaal + (index_i * (SofiNr % 10));
+        SET SofiNr = FLOOR(SofiNr / 10);
+	END WHILE;
+    
+    RETURN (totaal % 11 = 0);
+END; 
+;
 
-  IF MOD(totaal,11) = 0 AND totaal != 0 THEN
-  RETURN LPAD(BSN_NR, 9, '0');
-  END IF;
-  
-EXCEPTION
-  WHEN VALUE_ERROR THEN RETURN NULL;
-END;
+    
