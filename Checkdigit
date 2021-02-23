@@ -1,3 +1,5 @@
+#sofinummer is currently BSN nr 
+
 CREATE function fnElfProef(sofinummer INT)
   RETURNS BOOLEAN
   
@@ -11,5 +13,5 @@ BEGIN
   RETURN (totaal%11) = 0;
 END
 
-DELETE from csv.pensioen 
+DELETE from csv.pensioen
   WHERE personeelsnummer = 26718;
